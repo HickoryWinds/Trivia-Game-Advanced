@@ -1,0 +1,68 @@
+/*-----------------
+style the elements
+-----------------*/
+
+body {
+    background-image: url(music-violin.jpg);
+}
+
+hr {
+    border: 5px solid red;
+    border-radius: 5px;
+}
+
+/*-----------------
+style the classes
+-----------------*/
+
+/* for buttons */
+.btn {
+    background-color: royalblue;
+    border: 5px solid beige;
+    font-size: 14pt;
+    font-weight: bolder;
+}
+
+.question {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 16pt;
+}
+
+.answer {
+    font-weight: bold;
+    background-color: goldenrod;
+    border: 5px solid beige;
+}
+
+/*-----------------
+style the ids
+-----------------*/
+
+#backing {
+    background-color: aqua;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14pt;
+}
+
+#banner {
+    background-color: lightcoral;
+    border: 5px solid beige;
+}
+
+#start-pic {
+    height: 346px;
+    width: 518px;
+    border: 5px solid beige;
+}
+
+#end-pic {
+    height: 346px;
+    width: 518px;
+    border: 5px solid beige;
+}
+
+#timerDiv {
+    font-weight: bold;
+    background-color: greenyellow;
+    border: 5px solid beige;
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <title>Music Theory Quiz Adv</title>
+    <!-- set to make viewable on all devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Meyer css reset -->
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <!-- Latest compiled and minified CSS 4.0-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- link to bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- link to local stylesheet  -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <!-- only one row needed -->
+        <div class="row">
+
+            <!-- left column -->
+            <div class="col-sm-3"></div>
+
+            <!-- center column for all content -->
+            <!-- different 'pages' are shown by hiding and showing div elements -->
+            <!-- using css display settings 'block' and 'none' -->
+            <div class="col-sm-6" id="backing" style="text-align: center;">
+
+                <!-- banner for all pages -->
+                <div id="banner">
+                    <br>
+                    <h3>Music Theory Knowledge Quiz</h3>
+                </div>
+                <br>
+
+
+                <!-- answer summary and image on last 'page' -->
+                <div id="heresMagic" class="answer" style="display: none;">
+                    <br>
+                    <p>You got <span id="right">0</span> correct.</p>
+                    <p>You got <span id="wrong">0</span> incorrect.</p>
+                    <p>You did not answer <span id="none">0</span> question(s).</p>
+                </div>
+
+                <!-- image for answer summary page -->
+                <div id="end-image" style="display: none;">
+                    <br>
+                    <img id="end-pic" src="assets/images/kid-singing.jpg">
+                </div>
+
+                <!-- button to restart game -->
+                <div id="replay" style="display: none">
+                    <br>
+                    <input type="button" class="btn" onclick="startMe()" value="Try again?">
+                </div>
+
+                <!-- start button and image for first 'page' -->
+                <div id="start">
+                    <br>
+                    <input type="button" class="btn" onclick="startMe()" value="Start">
+                </div>
+                <br>
+
+                <!-- image used on start 'page' -->
+                <div id="start-image" style="display: block;">
+                    <img id="start-pic" src="assets/images/music-glasses.jpg">
+                </div>
+
+                <!-- timer on question 'page' -->
+                <div id="timerDiv" style="display: none;">
+                    <br>
+                    <p>Seconds Left: <span id="timer">10 seconds left</span></p>
+                </div>
+                <br>
+
+                <!-- show if answer is correct or incorrect -->
+                <div id="message" class="answer" style="display: none; margin-bottom: 10px;">
+                    <p>You are <span id="choice"></span></p>
+                    <p>The correct answer is <span id="coran"></span></p>
+                </div>
+
+                <!-- divs Q1 - Q8 are the 'pages' for each question -->
+                <div id="Q1" style="display: none;">
+                    <p class="question">What major key has 2 flats?</p>
+                    <button onclick="incorrectAns('Q1','B flat')" class="btn btn-primary mb-2">A</button>
+                    <button onclick="correctAns('Q1','B flat')" class="btn btn-primary mb-2">B flat</button>
+                    <button onclick="incorrectAns('Q1','B flat')" class="btn btn-primary mb-2">C</button>
+                    <button onclick="incorrectAns('Q1','B flat')" class="btn btn-primary mb-2">D flat</button>
+                    <hr>
+                </div>
+
+                <div id="Q2" style="display: none;">
+                    <p class="question">What minor key has 2 flats?</p>
+                    <button onclick="incorrectAns('Q2', 'G')" class="btn btn-primary mb-2">D</button>
+                    <button onclick="incorrectAns('Q2', 'G')" class="btn btn-primary mb-2">E</button>
+                    <button onclick="incorrectAns('Q2', 'G')" class="btn btn-primary mb-2">C</button>
+                    <button onclick="correctAns('Q2', 'G')" class="btn btn-primary mb-2">G</button>
+                    <hr>
+                </div>
+
+                <div id="Q3" style="display: none;">
+                    <p class="question">The number of sharps in a key can described using:</p>
+                    <button onclick="incorrectAns('Q3','circle of fifths')" class="btn btn-primary mb-2">circle of
+                        thirds</button>
+                    <button onclick="incorrectAns('Q3','circle of fifths')" class="btn btn-primary mb-2">circle of
+                        life</button>
+                    <button onclick="incorrectAns('Q3', 'circle of fifths')" class="btn btn-primary mb-2">circle of
+                        fourths</button>
+                    <button onclick="correctAns('Q3', 'circle of fifths')" class="btn btn-primary mb-2">circle of
+                        fifths</button>
+                    <hr>
+                </div>
+
+                <div id="Q4" style="display: none;">
+                    <p class="question">In a 6/8 time signature, which note gets one count?</p>
+                    <button onclick="incorrectAns('Q4', 'eighth note')" class="btn btn-primary mb-2">quarter
+                        note</button>
+                    <button onclick="correctAns('Q4', 'eighth note')" class="btn btn-primary mb-2">eighth note</button>
+                    <button onclick="incorrectAns('Q4', 'eighth note')" class="btn btn-primary mb-2">sixteenth
+                        note</button>
+                    <button onclick="incorrectAns('Q4', 'eighth note')" class="btn btn-primary mb-2">half note</button>
+                    <hr>
+                </div>
+
+                <div id="Q5" style="display: none;">
+
+                    <p class="question">A major key uses which mode?</p>
+                    <button onclick="incorrectAns('Q5', 'Ionian')" class="btn btn-primary mb-2">Aeolian</button>
+                    <button onclick="incorrectAns('Q5', 'Ionian')" class="btn btn-primary mb-2">Dorian</button>
+                    <button onclick="correctAns('Q5', 'Ionian')" class="btn btn-primary mb-2">Ionian</button>
+                    <button onclick="incorrectAns('Q5', 'Ionian')" class="btn btn-primary mb-2">Mixolydian</button>
+                    <hr>
+                </div>
+
+                <div id="Q6" style="display: none;">
+
+                    <p class="question">A minor key uses which mode?</p>
+                    <button onclick="correctAns('Q6', 'Aeolian')" class="btn btn-primary mb-2">Aeolian</button>
+                    <button onclick="incorrectAns('Q6', 'Aeolian')" class="btn btn-primary mb-2">Dorian</button>
+                    <button onclick="incorrectAns('Q6', 'Aeolian')" class="btn btn-primary mb-2">Ionian</button>
+                    <button onclick="incorrectAns('Q6', 'Aeolian')" class="btn btn-primary mb-2">Mixolydian</button>
+                    <hr>
+                </div>
+
+                <div id="Q7" style="display: none;">
+
+                    <p class="question">Which of the following is a fast tempo?</p>
+                    <button onclick="correctAns('Q7', 'Allegro')" class="btn btn-primary mb-2">Allegro</button>
+                    <button onclick="incorrectAns('Q7', 'Allegro')" class="btn btn-primary mb-2">Largo</button>
+                    <button onclick="incorrectAns('Q7', 'Allegro')" class="btn btn-primary mb-2">Andante</button>
+                    <button onclick="incorrectAns('Q7', 'Allegro')" class="btn btn-primary mb-2">Moderato</button>
+                    <hr>
+                </div>
+
+                <div id="Q8" style="display: none;">
+
+                    <p class="question">Which of the following is a slow tempo?</p>
+                    <button onclick="incorrectAns('Q8', 'Largo')" class="btn btn-primary mb-2">Allegro</button>
+                    <button onclick="correctAns('Q8', 'Largo')" class="btn btn-primary mb-2">Largo</button>
+                    <button onclick="incorrectAns('Q8', 'Largo')" class="btn btn-primary mb-2">Allegretto</button>
+                    <button onclick="incorrectAns('Q8', 'Largo')" class="btn btn-primary mb-2">Moderato</button>
+                    <hr>
+                </div>
+
+            </div>
+
+            <!-- right column -->
+            <div class="col-sm-3"></div>
+        </div>
+        <!-- run script after html is complete -->
+        <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+</body>
+
+</html>
