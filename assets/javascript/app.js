@@ -11,13 +11,14 @@ var cnt = 0;
 // answerSummary stores correct and incorrect responses
 var answerSummary = [];
 
-console.log("answerSummary @ start = " + answerSummary)
 // variables for calculating number of correct, incorrect, and non-answered questions
 var numberCorrect = 0;
 var numberInCorrect = 0;
 var numberNoAnswer = 0;
 // set number_questions to number of question asked
 var number_questions = 8;
+// answered is used to change seconds left to 5 when question answered
+// var answered = "";
 
 // timer used on each 'page'
 function masterTimer( ){
@@ -31,8 +32,6 @@ function masterTimer( ){
     if (secStart <= 0) {
       clearInterval(secCounter);
       cnt++;
-      console.log(cnt);
-      console.log("---------------");
       document.getElementById("message").style.display = "none";
       nextPage();
     }
@@ -45,6 +44,8 @@ function masterTimer( ){
 function correctAns(qName, coran) {
   var ident = qName;
   var correct = coran;
+  // change seconds displayed to 5 when question answered
+  secStart = 5;
   answerSummary.push("correct");
   document.getElementById("message").style.display = "block";
   document.getElementById("choice").innerHTML = "correct!";
@@ -57,6 +58,8 @@ function correctAns(qName, coran) {
 function incorrectAns(qName, coran) {
   var ident = qName;
   var correct = coran;
+  // change seconds displayed to 5 when question answered
+  secStart = 5;
   answerSummary.push("incorrect");
   document.getElementById("message").style.display = "block";
   document.getElementById("choice").innerHTML = "incorrect.";
@@ -71,13 +74,11 @@ function calcScore() {
   numberInCorrect = 0;
   numberNoAnswer = 0;
   clearInterval(secCounter);
-  console.log("end " + secStart);
   
   if (answerSummary.length === 0) {
     answerSummary = ["a"];
   }
   for (var l = 0; l < answerSummary.length; l++) {
-    console.log("l = " + l + " answerSummary{" +l + "} = "+ answerSummary[l]);
     if (answerSummary[l] === "correct") {
       numberCorrect++;
     }
